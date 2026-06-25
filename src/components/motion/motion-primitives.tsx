@@ -95,7 +95,7 @@ export function MotionFloat({ children, className }: BaseProps) {
           : {
               duration: 6,
               repeat: Number.POSITIVE_INFINITY,
-              ease: 'easeInOut',
+              ease: [0.77, 0, 0.175, 1],
             }
       }
     >
@@ -140,7 +140,7 @@ export function MotionGlow({ className = '' }: { className?: string }) {
           : {
               duration: 7,
               repeat: Number.POSITIVE_INFINITY,
-              ease: 'easeInOut',
+              ease: [0.77, 0, 0.175, 1],
             }
       }
     />

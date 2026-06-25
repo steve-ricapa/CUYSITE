@@ -12,7 +12,9 @@ export function FaqItem({ question, answer }: FaqItemProps) {
           +
         </span>
       </summary>
-      <p className="body-md mt-4 max-w-3xl">{answer}</p>
+      <div className="faq-content">
+        <p className="body-md mt-4 max-w-3xl">{answer}</p>
+      </div>
     </details>
   )
 }

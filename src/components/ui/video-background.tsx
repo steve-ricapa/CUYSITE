@@ -1,7 +1,11 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-export function VideoBackground() {
+type VideoBackgroundProps = {
+  playing?: boolean
+}
+
+export function VideoBackground({ playing = false }: VideoBackgroundProps) {
   const reduceMotion = useReducedMotion()
   const [loaded, setLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -17,6 +21,16 @@ export function VideoBackground() {
     }
   }, [])
 
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    if (playing) {
+      video.play().catch(() => {})
+    } else {
+      video.pause()
+    }
+  }, [playing])
+
   return (
     <div className="absolute inset-0 overflow-hidden">
       <motion.div
@@ -25,34 +39,17 @@ export function VideoBackground() {
         animate={reduceMotion ? undefined : { opacity: loaded ? 1 : 0 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       >
-        <motion.video
+        <video
           ref={videoRef}
-          autoPlay
           loop
           muted
           playsInline
           className="h-full w-full object-cover"
           style={{ opacity: 0.7 }}
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  scale: [1, 1.04, 1],
-                }
-          }
-          transition={
-            reduceMotion
-              ? undefined
-              : {
-                  duration: 12,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }
-          }
           onCanPlay={handleCanPlay}
         >
           <source src="/assets/video-fondo-cuysite.mp4" type="video/mp4" />
-        </motion.video>
+        </video>
       </motion.div>
 
       <div

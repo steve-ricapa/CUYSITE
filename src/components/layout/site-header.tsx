@@ -15,29 +15,31 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50">
       <div className="container-shell py-4">
         <div className="relative flex items-center justify-center">
-          <Link to="/" className="absolute left-0 top-1/2 -translate-y-1/2">
-            <span className="block rounded-xl bg-white px-3 py-2 shadow-sm">
-              <BrandLogo variant="dark" className="h-12 w-auto" />
-            </span>
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link to="/">
+              <span className="flex aspect-[5/3] h-15 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm sm:h-[3.9rem]">
+                <BrandLogo variant="dark" className="h-[4.4rem] w-auto max-w-none scale-[1.26] object-cover sm:h-[4.8rem]" />
+              </span>
+            </Link>
 
-          <div className="hidden items-center gap-4 rounded-full border border-white/15 bg-white/8 px-6 py-2.5 shadow-lg shadow-black/5 backdrop-blur-2xl xl:flex">
-            <nav className="flex items-center gap-1">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === '/'}
-                  className={({ isActive }) => `rounded-full px-3 py-1.5 text-sm font-medium transition duration-200 ease-out ${isActive ? 'bg-white/15 text-[var(--primary)]' : 'text-[var(--text-soft)] hover:bg-white/10 hover:text-[var(--primary)]'}`}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </nav>
+            <div className="hidden items-center gap-4 rounded-full border border-white/15 bg-white/8 px-6 py-2.5 shadow-lg shadow-black/5 backdrop-blur-2xl xl:flex">
+              <nav className="flex items-center gap-1">
+                {navItems.map((item) => (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    end={item.to === '/'}
+                    className={({ isActive }) => `rounded-full px-3 py-1.5 text-sm font-medium transition duration-200 ease-out ${isActive ? 'bg-white/15 text-[var(--primary)]' : 'text-[var(--text-soft)] hover:bg-white/10 hover:text-[var(--primary)]'}`}
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+              </nav>
 
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
-              <ButtonLink to="/contacto" className="text-sm">Solicitar cotizacion</ButtonLink>
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <ButtonLink to="/contacto" className="text-sm">Solicitar cotizacion</ButtonLink>
+              </div>
             </div>
           </div>
 
@@ -61,9 +63,9 @@ export function SiteHeader() {
             <motion.div
               id="mobile-navigation"
               className="mx-auto mt-3 w-fit overflow-hidden rounded-2xl border border-white/15 bg-white/8 p-3 shadow-lg shadow-black/5 backdrop-blur-2xl xl:hidden"
-              initial={reduceMotion ? undefined : { opacity: 0, height: 0, y: -10 }}
-              animate={reduceMotion ? undefined : { opacity: 1, height: 'auto', y: 0 }}
-              exit={reduceMotion ? undefined : { opacity: 0, height: 0, y: -10 }}
+              initial={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+              animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+              exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
             >
               <nav className="grid gap-1">
