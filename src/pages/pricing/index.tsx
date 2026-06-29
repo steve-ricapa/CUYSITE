@@ -7,15 +7,18 @@ import { SectionShell } from '../../components/ui/section-shell'
 import { maintenanceIncludes, pricingNotes, pricingPlans } from '../../content/site-content'
 
 export function PricingPage() {
+  const darkPageBackground = '#040812'
+
   return (
     <>
       <PageHero
+        dark
         eyebrow="Precios"
         title="Cada proyecto se cotiza según sus objetivos, alcance y nivel de personalización."
         description="Te mostramos una base orientativa para que tengas una referencia clara, pero el precio final depende de lo que tu negocio realmente necesite."
       />
 
-      <SectionShell>
+      <SectionShell style={{ background: darkPageBackground }}>
         <MotionStagger className="grid gap-6 lg:grid-cols-3">
           {pricingPlans.map((plan) => (
             <MotionStaggerItem key={plan.name}>
@@ -85,7 +88,7 @@ export function PricingPage() {
         </MotionStagger>
       </SectionShell>
 
-      <SectionShell muted>
+      <SectionShell style={{ background: darkPageBackground }}>
         <MotionReveal>
           <div className="rounded-[1.75rem] border p-7 sm:p-8" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
             <div className="flex items-start gap-3">

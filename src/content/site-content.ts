@@ -125,6 +125,10 @@ export const faqItems = [
     question: '¿La pagina se adapta a celulares?',
     answer: 'Si. Todos nuestros proyectos se diseñan y desarrollan para verse bien en celulares, tablets y escritorio.',
   },
+  {
+    question: '¿Puedo actualizar el contenido yo mismo?',
+    answer: 'Si. Te explicamos como hacer cambios basicos de texto e imagenes. Si necesitas ajustes mas grandes, nosotros nos encargamos sin complicaciones.',
+  },
 ]
 
 export const contactLinks = [

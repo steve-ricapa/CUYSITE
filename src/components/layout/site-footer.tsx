@@ -11,7 +11,9 @@ export function SiteFooter() {
         <div className="px-2 py-10 sm:px-4 lg:px-0 lg:py-12">
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr] lg:items-start">
             <div>
-              <BrandLogo variant="light" className="h-12 w-auto" />
+              <span className="flex aspect-[5/3] h-15 w-fit items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm sm:h-[3.9rem]">
+                <BrandLogo variant="dark" className="h-[4.4rem] w-auto max-w-none scale-[1.26] object-cover sm:h-[4.8rem]" />
+              </span>
               <p className="mt-5 max-w-sm text-sm leading-7 text-white/70 sm:text-base">
                 Desarrollamos páginas web modernas para negocios, profesionales y marcas que quieren verse mejor y vender con más confianza.
               </p>

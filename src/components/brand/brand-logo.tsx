@@ -1,6 +1,7 @@
 import { useTheme } from '../../theme/theme-provider'
-import logoForDarkBg from '../../../logo-principal-tema-oscuro.png'
-import logoForLightBg from '../../../logo-principal-tema-blanco.png'
+
+const logoForDarkBg = '/assets/logo-principal-tema-oscuro.png'
+const logoForLightBg = '/assets/logo-principal-tema-blanco.png'
 
 type BrandLogoProps = {
   variant?: 'light' | 'dark' | 'auto'

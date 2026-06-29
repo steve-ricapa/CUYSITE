@@ -12,17 +12,18 @@ export function HeroSection() {
     <section className="relative overflow-hidden -mt-28 pb-16 sm:pb-20 lg:pb-28" style={{ background: 'var(--surface-dark)' }}>
       <VideoBackground playing={videoPlaying} />
       <Particles
-        particleCount={300}
+        particleCount={180}
         particleSpread={10}
-        speed={0.1}
+        speed={0.08}
         particleColors={['#ffffff']}
         moveParticlesOnHover
-        particleHoverFactor={1}
+        particleHoverFactor={0.7}
         alphaParticles={false}
-        particleBaseSize={100}
-        sizeRandomness={1}
+        particleBaseSize={82}
+        sizeRandomness={0.8}
         cameraDistance={18}
         disableRotation={false}
+        pixelRatio={1}
       />
 
       <MotionGlow className="absolute left-[6%] top-24 h-40 w-40 rounded-full blur-3xl" />

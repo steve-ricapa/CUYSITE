@@ -1,44 +1,83 @@
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import {
   MotionHover,
   MotionReveal,
   MotionStagger,
   MotionStaggerItem,
 } from '../../../components/motion/motion-primitives'
-import LiquidEther from '../../../components/ui/liquid-ether'
 import { frontendTechItems } from '../../../content/site-content'
+
+const LiquidEther = lazy(() => import('../../../components/ui/liquid-ether'))
 
 const developmentHighlights = ['Rapido', 'Escalable', 'Facil de mantener']
 
 export function TechTrustSection() {
+  const [shouldRenderBackground, setShouldRenderBackground] = useState(false)
+  const sectionRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    const node = sectionRef.current
+    if (!node || shouldRenderBackground) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        setShouldRenderBackground(true)
+        observer.disconnect()
+      },
+      { rootMargin: '240px 0px' },
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [shouldRenderBackground])
+
   return (
-    <section className="section-shell relative overflow-hidden" style={{ background: 'var(--surface-muted)' }}>
+    <section ref={sectionRef} className="section-shell relative overflow-hidden" style={{ background: 'var(--surface-muted)' }}>
       <div className="absolute inset-0 opacity-95" aria-hidden="true">
-        <LiquidEther
-          colors={['#644bd2', '#a89bff', '#b497cf']}
-          mouseForce={20}
-          cursorSize={100}
-          isViscous
-          viscous={30}
-          autoDemo
-          autoSpeed={0.5}
-          autoIntensity={2.2}
-          isBounce={false}
-          resolution={0.5}
-        />
+        {shouldRenderBackground ? (
+          <Suspense fallback={null}>
+            <LiquidEther
+              colors={['#644bd2', '#a89bff', '#b497cf']}
+              mouseForce={16}
+              cursorSize={80}
+              isViscous
+              viscous={24}
+              iterationsViscous={24}
+              iterationsPoisson={20}
+              autoDemo
+              autoSpeed={0.38}
+              autoIntensity={1.6}
+              isBounce={false}
+              resolution={0.35}
+            />
+          </Suspense>
+        ) : null}
       </div>
 
       <div className="container-shell relative z-10">
         <MotionReveal>
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="eyebrow">Tecnologia real</p>
-              <h2 className="headline-lg mt-6 max-w-xl text-balance">Tecnologias de desarrollo.</h2>
-              <p className="body-lg mt-5 max-w-2xl text-pretty">
-                HTML, CSS, JavaScript, TypeScript y React forman la base del sitio para que cargue rapido, se vea limpio y sea facil de mantener cuando tu negocio crezca.
-              </p>
+          <div className="flex flex-col gap-8">
+            <div className="grid max-w-none gap-5 lg:w-full lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-4">
+              <div className="max-w-2xl">
+                <p className="eyebrow">Tecnologia real</p>
+                <h2 className="headline-lg mt-6 max-w-xl text-balance">Tecnologias de desarrollo.</h2>
+                <p className="body-lg mt-5 max-w-2xl text-pretty">
+                  HTML, CSS, JavaScript, TypeScript y React forman la base del sitio para que cargue rapido, se vea limpio y sea facil de mantener cuando tu negocio crezca.
+                </p>
+              </div>
+
+              <div className="flex justify-start lg:justify-end lg:pt-14 xl:-translate-x-3 2xl:-translate-x-4">
+                <img
+                  src="/assets/cuy-designer.png"
+                  alt="Cuy Designer"
+                  className="h-[11.7rem] w-auto object-contain sm:h-[14.04rem] lg:h-[16.38rem]"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            <MotionStagger className="flex max-w-xl flex-wrap gap-3 lg:justify-end">
+            <MotionStagger className="mt-2 flex flex-wrap gap-3 lg:flex-nowrap">
               {developmentHighlights.map((item) => (
                 <MotionStaggerItem key={item}>
                   <div

@@ -5,14 +5,17 @@ import { SectionShell } from '../../components/ui/section-shell'
 import { processSteps } from '../../content/site-content'
 
 export function ProcessPage() {
+  const darkPageBackground = '#040812'
+
   return (
     <>
       <PageHero
+        dark
         eyebrow="Proceso"
         title="Trabajamos con un proceso claro para que sepas que sucede en cada etapa y por que importa."
         description="Nuestro objetivo no es solo entregar una web bonita, sino ayudarte a construir una presencia digital ordenada y funcional."
       />
-      <SectionShell>
+      <SectionShell style={{ background: darkPageBackground }}>
         <MotionStagger className="mx-auto grid max-w-5xl gap-5">
           {processSteps.map((step, index) => (
             <MotionStaggerItem key={step.title}>

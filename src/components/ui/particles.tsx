@@ -118,6 +118,7 @@ export function Particles({
 }: ParticlesProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -143,6 +144,15 @@ export function Particles({
     };
     window.addEventListener('resize', resize, false);
     resize();
+
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { rootMargin: '120px 0px' }
+    );
+
+    visibilityObserver.observe(container);
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
@@ -204,6 +214,10 @@ export function Particles({
 
     const update = (t: number) => {
       animationFrameId = requestAnimationFrame(update);
+      if (!isVisibleRef.current) {
+        lastTime = t;
+        return;
+      }
       const delta = t - lastTime;
       lastTime = t;
       elapsed += delta * speed;
@@ -231,6 +245,7 @@ export function Particles({
 
     return () => {
       window.removeEventListener('resize', resize);
+      visibilityObserver.disconnect();
       if (moveParticlesOnHover) {
         window.removeEventListener('mousemove', handleMouseMove);
       }

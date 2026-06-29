@@ -50,6 +50,16 @@ export function FinalCta() {
                     )}
                   </div>
                 </MotionStaggerItem>
+                <MotionStaggerItem>
+                  <div className="relative mt-2 flex w-full justify-center lg:justify-start">
+                    <img
+                      src="/assets/cuy-contacto.png"
+                      alt="Cuy contacto"
+                      className="h-auto w-full max-w-[14rem] object-contain sm:max-w-[16rem] lg:max-w-[17rem]"
+                      loading="lazy"
+                    />
+                  </div>
+                </MotionStaggerItem>
               </MotionStagger>
 
               <MotionStagger className="grid gap-4">

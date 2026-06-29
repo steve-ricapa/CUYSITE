@@ -5,14 +5,17 @@ import { SectionShell } from '../../components/ui/section-shell'
 import { serviceItems } from '../../content/site-content'
 
 export function ServicesPage() {
+  const darkPageBackground = '#040812'
+
   return (
     <>
       <PageHero
+        dark
         eyebrow="Servicios"
         title="No todas las paginas web cumplen el mismo objetivo. Diseñamos segun lo que tu negocio necesita lograr."
         description="Cada formato resuelve una necesidad distinta: captar leads, mostrar credibilidad, presentar tu trabajo o ayudar a que un cliente compre."
       />
-      <SectionShell muted>
+      <SectionShell style={{ background: darkPageBackground }}>
         <MotionStagger className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {serviceItems.map(({ icon: Icon, title, description }) => (
             <MotionStaggerItem key={title}>

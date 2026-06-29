@@ -7,8 +7,8 @@ export function ContactIntroSection() {
     <MotionReveal>
       <div>
         <p className="eyebrow">Canales de contacto</p>
-        <h2 className="headline-lg mt-6 max-w-xl">Hablemos del objetivo real de tu pagina web.</h2>
-        <p className="body-lg mt-5 max-w-xl">
+        <h2 className="headline-lg mt-6 max-w-xl !text-white">Hablemos del objetivo real de tu pagina web.</h2>
+        <p className="body-lg mt-5 max-w-xl !text-white/72">
           Cuanto mas nos cuentes sobre tu negocio, tus metas y el tipo de cliente al que quieres llegar, mejor podremos orientarte.
         </p>
         <div className="mt-8">
